@@ -1,0 +1,35 @@
+Objective:
+Build a python osnit scanner that collected publically avalible whois,dns/ip, geolocation information
+learn :
+	I learn a basic of the tools used manually whois , dns, looksup , geographical location 
+Whois:
+	I used whois for find the domain creation information
+1.	rejester details 
+2.	domain creation date
+3.	domain expiration date
+4.	named of server
+this is provide only publicy avalible information on the internet
+DNS:
+	Dns is a domain named system . its provide a domain name on the ip address
+	Nslookup is used to find the ip adresss from the domain name
+Example :
+	If I find the ip address form the domain example.com
+	Its provide a ipv4 address of the this domain
+Geographical location :
+			This is tool is provide  the geographical information of the  domain this is not a correct information its provide a information of networks 
+Its provide
+1.	region
+2.	country
+3.	isp
+4.	organization 
+concolusion:
+		 I used the day 1 tools perform manually after this step then I bulid a whois python script to aumation whois
+The use dns/ip to find ip in python script 
+Then I used geographical api key to find the geo information of the domain the made a finnaly 
+Passive recconesence scanner
+They get the input a domain name and provide the 
+Whois information 
+DNS information
+Geographical information
+
+	
