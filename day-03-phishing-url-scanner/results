@@ -1,0 +1,85 @@
+-------- A-N-A-L-Y-I-S-i-S Y-O-U-R P-H-I-S-I-N-G -U-R-L ------
+
+============================================================
+URL        : https://github.com
+Risk Score : 0%
+
+Reasons:
+  - No suspicious indicators found
+============================================================
+
+============================================================
+URL        : http://example.com/login
+Risk Score : 30%
+
+Reasons:
+  - URL is not using HTTPS
+============================================================
+
+============================================================
+URL        : https://login.example.com
+Risk Score : 20%
+
+Reasons:
+  - Suspicious keyword found: login
+============================================================
+
+============================================================
+URL        : https://verify.example.com/account
+Risk Score : 20%
+
+Reasons:
+  - Suspicious keyword found: verify
+============================================================
+
+============================================================
+URL        : https://login.verify.account.example.com
+Risk Score : 85%
+
+Reasons:
+  - Suspicious keyword found: login
+  - Suspicious keyword found: verify
+  - Suspicious keyword found: account
+  - Too many subdomains: login.verify.account.example.com
+============================================================
+
+============================================================
+URL        : http://192.168.1.10/login
+Risk Score : 70%
+
+Reasons:
+  - URL is not using HTTPS
+  - Suspicious IP address: 192.168.1.10
+============================================================
+
+============================================================
+URL        : https://example.com
+Risk Score : 0%
+
+Reasons:
+  - No suspicious indicators found
+============================================================
+
+============================================================
+URL        : http://example.com/bank
+Risk Score : 30%
+
+Reasons:
+  - URL is not using HTTPS
+============================================================
+
+============================================================
+URL        : https://secure.example.com
+Risk Score : 20%
+
+Reasons:
+  - Suspicious keyword found: secure
+============================================================
+
+============================================================
+URL        : https://example.com/update
+Risk Score : 0%
+
+Reasons:
+  - No suspicious indicators found
+============================================================
