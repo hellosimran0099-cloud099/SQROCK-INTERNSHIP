@@ -1,0 +1,18 @@
+# Day 2 - Email Harvesting
+Objective:
+
+The objective of this task was to understand how publicly
+available email addresses can be identified from an authorized
+webpage using Python.
+
+WHO TO USE THIS ATTACKER:
+
+
+a attacker use this email harvesting tool to collect publicaly avalible information from the publice source 
+its find the empoley emails and name 
+this data a attecker is used for the phising , scam , or frudulendt activetity
+
+banifite:
+
+a good use use this tool to identitfy the data of the organization who a publicaly avalibe and protect them from unothorized or unwanted attacks
+
