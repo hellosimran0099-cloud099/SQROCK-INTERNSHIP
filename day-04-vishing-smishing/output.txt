@@ -1,0 +1,16 @@
+HESE ALL SENERIO USE FOR VISSING AND SMISSING
+
+
+senerio no 1
+"Training Bank",
+    "Suspicious Transaction",
+    "Fear + Urgency"
+
+senerio no 2
+    "Training Delivery Service",
+    "Package Notification",
+    "Urgency + Curiosity"
+senserio no 3
+    "Training Online Service",
+    "Account Verification",
+    "Authority + Fear"
