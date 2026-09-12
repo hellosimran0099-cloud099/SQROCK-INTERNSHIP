@@ -1,0 +1,12 @@
+DAY 7 
+TOPIC = PASSWORD ATTACK CREDINTIONAL STUFING
+REPORT= 
+        i am using a python anvernament useing flask to create  a local server for 
+        his local lab test 
+        then i create a pyhton code of burtforce attack script
+        a brute force attack secripte is use the a list of PASSWORD that applyed on login page to indeftify the correct PASSWORD
+DEFANCE:
+        me add in a server linition logins attempt on the server that is reduce the burtfoce attack after maimum limition of login account can be locked
+        captcha : it is real security to compare a man or bots use a page to try login this provide only real use filter out
+        MFA ; it is a mullti factor autication then use burtforce attacker one login is compromise then next authication PASSWORD to protect this 
+        breach monitiring: its a dession making pear that is decide to who to authoicate next pair
