@@ -1,0 +1,26 @@
+| Profile   |       Age | Followers | Following | Posts | No Pic | Default Bio |    Score | Assessment      |
+| --------- | --------: | --------: | --------: | ----: | ------ | ----------- | -------: | --------------- |
+| Profile 1 |    7 days |         2 |       900 |     1 | Yes    | Yes         | **100%** | Very High Risk  |
+| Profile 2 | 1200 days |      4500 |       320 |   870 | No     | No          |   **0%** | Low Risk        |
+| Profile 3 |   15 days |         8 |       250 |     3 | Yes    | Yes         | **100%** | Very High Risk  |
+| Profile 4 |  400 days |        30 |       350 |     2 | No     | Yes         |  **25%** | Medium/Low Risk |
+| Profile 5 |  800 days |      1800 |       450 |   650 | No     | No          |   **0%** | Low Risk        |
+Analysis
+
+Profile 1:
+The account is only 7 days old, follows 900 accounts but has only 2 followers, has no profile picture, has only 1 post, and uses a default bio. These multiple indicators produce a 100% suspicious score.
+
+Profile 2:
+The account is approximately 1200 days old, has 4500 followers, 870 posts, a profile picture, and a non-default bio. No suspicious heuristic is triggered, resulting in a 0% score.
+
+Profile 3:
+This account is only 15 days old, has very few followers, follows many accounts, has no profile picture, has only 3 posts, and uses a default bio. The combination produces a 100% suspicious score.
+
+Profile 4:
+The account is older, but it has only 30 followers while following 350 accounts. It also has only 2 posts and a default bio. The scoring system identifies some suspicious behavior, giving it a 25% score.
+
+Profile 5:
+This is an older and active account with 1800 followers, 650 posts, a profile picture, and a non-default bio. None of the defined suspicious indicators are triggered, resulting in a 0% score.
+
+Conclusion:
+The script uses behavioral heuristics to identify potentially fake or automated profiles. A high score indicates that a profile deserves further investigation; it does not prove that the account is fake.
