@@ -1,0 +1,31 @@
+USB Drop Prevention Policy
+Introduction
+
+A USB drop attack is a social engineering technique in which an attacker leaves an unknown or infected USB drive in a location where a target may find it. The attacker relies on curiosity or trust to make the victim connect the USB device to a computer.
+
+USB devices can create security risks if they contain malicious files or scripts. Therefore, organizations should establish a clear USB security policy and provide user awareness training.
+
+Prevention Measures
+1. Disable AutoRun
+
+AutoRun should be disabled on organizational computers. This reduces the possibility of programs being automatically launched when a removable USB device is connected.
+
+2. Use Endpoint DLP
+
+Endpoint Data Loss Prevention (DLP) controls can monitor and restrict the use of removable storage devices. Organizations can limit unauthorized USB devices and prevent sensitive information from being copied to external media.
+
+3. User Awareness Training
+
+Employees should be trained never to connect an unknown USB device to an organization computer. If a USB drive is found in a parking area, office, or other location, it should be handed to the security or IT team instead of being connected.
+
+4. Authorized USB Devices
+
+Organizations should allow only approved and authorized USB devices where possible. Unknown or personal removable media should not be used on company systems without permission.
+
+5. Incident Reporting
+
+If an employee accidentally connects an unknown USB device, the incident should be reported immediately to the IT or security team. Early reporting allows the organization to investigate and take appropriate defensive actions.
+
+Conclusion
+
+USB drop attacks combine physical access with social engineering. The main defenses are disabling AutoRun, controlling removable devices through endpoint DLP, and educating users about the risks of unknown USB drives. A strong USB security policy can reduce the chance of accidental malware execution and unauthorized data access.
