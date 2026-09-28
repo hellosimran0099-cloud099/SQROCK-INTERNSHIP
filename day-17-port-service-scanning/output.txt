@@ -1,0 +1,2 @@
+[*] Initiating Socket Sweep on: 127.0.0.1
+[!] OPEN SERVICE DETECTED: Port 8080
