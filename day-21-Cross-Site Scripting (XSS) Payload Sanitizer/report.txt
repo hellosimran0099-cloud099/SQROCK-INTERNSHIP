@@ -1,0 +1,200 @@
+
+*Cross-Site Scripting: Stored vs Reflected vs DOM-Based*
+
+Introduction
+
+Cross-Site Scripting (XSS) is a client-side web security vulnerability in which untrusted data reaches an HTML/JavaScript execution context without appropriate validation or output encoding. Depending on how the malicious input enters and reaches the browser, XSS is commonly categorized as **Stored XSS, Reflected XSS, or DOM-based XSS**.
+
+
+Stored XSS
+
+Example flow:
+
+```text
+Attacker Input
+      ↓
+Web Application
+      ↓
+Database / Storage
+      ↓
+Victim requests page
+      ↓
+Stored input returned
+      ↓
+Browser
+```
+
+Example locations:
+
+* Comment
+* User profile
+* Forum post
+* Product review
+
+### Key characteristic
+
+Payload **persist** karta hai.
+
+Isliye jab another user affected page open karta hai, stored data browser tak pahunch sakta hai.
+
+### Example concept
+
+```text
+User submits comment
+        ↓
+Comment stored in database
+        ↓
+Another user opens comments
+        ↓
+Stored content rendered
+```
+
+---
+
+# 3.2 Reflected XSS
+
+**Reflected XSS** mein malicious input permanently database mein store nahi hota. Input request ke through server ko jata hai aur server response mein immediately reflect ho sakta hai.
+
+Flow:
+
+```text
+Attacker-controlled request
+          ↓
+       Web Server
+          ↓
+   Input reflected
+          ↓
+      HTTP Response
+          ↓
+        Browser
+```
+
+Common locations:
+
+* Search parameters
+* URL parameters
+* Error messages
+* Form parameters
+
+### Key characteristic
+
+Payload **request → response** cycle mein reflect hota hai.
+
+---
+
+# 3.3 DOM-Based XSS
+
+DOM-based XSS mein vulnerability primarily **client-side JavaScript** ke processing flow mein hoti hai.
+
+Flow:
+
+```text
+User-controlled data
+        ↓
+Browser
+        ↓
+Client-side JavaScript
+        ↓
+DOM manipulation
+        ↓
+Dangerous HTML/JS context
+```
+
+Server ko payload necessarily return karna zaroori nahi hota.
+
+Common browser-side sources include:
+
+```text
+URL fragment
+URL parameters
+document.location
+```
+
+Dangerous DOM sinks/context examples include:
+
+```text
+innerHTML
+document.write()
+```
+
+### Key characteristic
+
+Main vulnerability **browser-side JavaScript/DOM processing** mein hoti hai.
+
+---
+
+# 4. Contextual Design Variance
+
+| Feature                  | Stored XSS                                  | Reflected XSS                           | DOM-Based XSS                       |
+| ------------------------ | ------------------------------------------- | --------------------------------------- | ----------------------------------- |
+| Payload storage          | Server/database mein persist ho sakta hai   | Normally persist nahi hota              | Normally client-side flow mein      |
+| Main processing          | Server + browser                            | Server response + browser               | Browser/client-side JavaScript      |
+| Typical source           | Comment/profile/review                      | URL/form parameter                      | URL/DOM-controlled data             |
+| Server response involved | Usually yes                                 | Yes                                     | Not necessarily                     |
+| Persistence              | Yes                                         | No                                      | Usually no                          |
+| Primary analysis         | Server-side data flow + output context      | Request/response + output context       | JavaScript source-to-sink flow      |
+| Important defense        | Contextual output encoding + safe rendering | Contextual output encoding + validation | Safe DOM APIs + contextual encoding |
+
+---
+
+# 5. Important Security Principle
+
+Teeno models mein basic security principle same hai:
+
+> **Untrusted input ko executable context mein directly place nahi karna.**
+
+Lekin defense ka exact implementation **context-dependent** hota hai.
+
+For example:
+
+```text
+HTML context
+JavaScript context
+URL context
+CSS context
+```
+
+har context mein encoding requirements different ho sakti hain.
+
+Isliye sirf:
+
+```python
+re.sub(...)
+```
+
+jaisi blacklist filtering ko complete XSS defense nahi samajhna chahiye.
+
+---
+
+# 6. Final Deliverables
+
+Aapka folder is tarah ho sakta hai:
+
+```text
+day-xx-xss-payload-sanitizer/
+│
+├── xss_validation.py
+├── validation_output.txt
+└── XSS_Analysis_Report.docx
+```
+
+### `validation_output.txt`
+
+Ismein **actual terminal output** save karo, jisme all **10 adversarial test parameters** visible hon.
+
+### `XSS_Analysis_Report.docx`
+
+Ismein ye sections rakho:
+
+```text
+1. Introduction
+2. Objective
+3. XSS Overview
+4. Stored XSS
+5. Reflected XSS
+6. DOM-Based XSS
+7. Contextual Design Variances
+8. Validation Methodology
+9. Security Recommendations
+10. Conclusion
+```
