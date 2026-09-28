@@ -1,10 +1,11 @@
 # SQROCK-INTERNSHIP
 
 CYBERSECURITY
+
 INTERNSHIP PROGRAM
-Social Engineering Attack Simulations
-Using Python — 15-Day Task Calendar
-Issuing Body
+
+#Social Engineering Attack Simulations
+
 Program
 Duration
 Mode
