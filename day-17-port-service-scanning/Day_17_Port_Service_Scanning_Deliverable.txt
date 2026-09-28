@@ -1,0 +1,42 @@
+DAY 17: LOCAL NETWORK PORT & SERVICE SCANNING
+Target Socket Output Verification + Network Mapping Topology
+1. Objective
+Discover open local sockets to evaluate network service exposure on a controlled local development environment.
+2. Practical Test Configuration
+Target Host	127.0.0.1 (Localhost)
+Scan Type	TCP Socket Sweep
+Ports Tested	22, 80, 443, 5432, 8080
+Detected Open Port	8080
+3. Target Socket Output Verification
+[*] Initiating Socket Sweep on: 127.0.0.1
+[!] OPEN SERVICE DETECTED: Port 8080
+The socket scanner tested the selected TCP ports on localhost. Port 8080 returned a successful TCP connection result, confirming that a service is listening on that port. The scanner did not report an open response for ports 22, 80, 443, or 5432.
+4. Network Mapping Topology Schema
+                 LOCAL DEVELOPMENT HOST
+                 ┌─────────────────────┐
+                 │     127.0.0.1       │
+                 │                     │
+                 │  Developer Machine  │
+                 │         │           │
+                 │         ▼           │
+                 │    TCP Port 8080    │
+                 │         │           │
+                 │         ▼           │
+                 │  Developer Service  │
+                 │   / Web Interface   │
+                 └─────────────────────┘
+5. Port Exposure Mapping
+Port	Common Use	Scan Result
+22	SSH	Not detected open
+80	HTTP	Not detected open
+443	HTTPS	Not detected open
+5432	PostgreSQL	Not detected open
+8080	Web/Application service	OPEN
+6. Analysis
+The scan verified that TCP port 8080 is open on the local development host. An open port indicates that a local service is accepting TCP connections. The port number alone does not definitively identify the application, so the associated process should be identified through local system inspection.
+7. Security Consideration
+Developer environments should expose only services that are required. Unnecessary network-accessible development or administration services can increase the attack surface. Access controls, firewall rules, authentication, and appropriate network segmentation should be applied where required.
+8. Conclusion
+The Day 17 practical successfully verified local TCP socket exposure. Among the five tested ports, port 8080 was detected as open on 127.0.0.1. The result provides a basic network exposure map for the local developer environment and identifies port 8080 for further service/process verification.
+9. Evidence
+Attach the PowerShell screenshot showing the executed port_scanner.py command and the verified OPEN SERVICE DETECTED: Port 8080 output.
