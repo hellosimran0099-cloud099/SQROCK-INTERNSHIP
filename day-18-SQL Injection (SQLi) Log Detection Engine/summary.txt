@@ -1,0 +1,32 @@
+Objective
+
+
+The objective of this task was to develop and execute a Python-based SQL Injection Log Detection Engine that analyzes web access logs and identifies suspicious SQL Injection signatures using regular expressions.
+
+
+Execution Result
+
+
+The detector was executed successfully using the provided mock access logs.
+
+Detected output:
+[CRITICAL MALICIOUS PATTERN] Source: 172.16.5.9 -> String: 172.16.5.9 - "GET /search?q=UNION%20SELECT%20null,password%20FROM%20users-- HTTP/1.1" 500
+
+Output Analysis
+
+
+The source IP was: 172.16.5.9 
+
+The suspicious request targeted: get
+
+The query parameter contained: UNION%20SELECT
+
+where %20 represents a URL-encoded space, corresponding to the SQL-related pattern: space of the regex
+
+The request also contained: ,password%20FROM%20users-
+
+which is included as a suspicious SQL Injection signature in the detection regex supplied for Day 18.
+
+The HTTP response was: 500
+
+which indicates an internal server error. This is an additional event that may warrant investigation, but the status code alone does not establish that SQL Injection was successful.
