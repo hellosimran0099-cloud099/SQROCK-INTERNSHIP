@@ -1,0 +1,8 @@
+[*] Discovering endpoints for: http://localhost:5000
+[MATCH DETECTED] Route accessible: http://localhost:5000/admin (Status: 200)
+[MATCH DETECTED] Route accessible: http://localhost:5000/dashboard (Status: 200)
+[MATCH DETECTED] Route accessible: http://localhost:5000/api/v1 (Status: 200)
+[Rote NOT FOUND] : http://localhost:5000/rendom (Status: 404)
+[Rote NOT FOUND] : http://localhost:5000/.env (Status: 404)
+[Rote NOT FOUND] : http://localhost:5000/backup.sql (Status: 404)
+PS C:\Users\imran cyber\Desktop\september intership\day-20- Web Directory Brute-Force Simulation> 
