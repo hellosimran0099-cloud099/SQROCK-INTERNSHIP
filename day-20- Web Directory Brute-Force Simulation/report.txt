@@ -1,0 +1,35 @@
+# Operational Remediation Brief
+
+### Objective
+
+The purpose of this remediation activity is to reduce web attack surface by preventing unauthorized access to administrative routes, development artifacts, backup files, configuration data, and other non-public resources.
+
+### Defensive Deployment Strategy
+
+Web applications should use explicit routing controls to distinguish between publicly accessible and restricted functionality. Administrative and internal routes should require appropriate authentication and authorization. Development-only endpoints should be removed or disabled before production deployment.
+
+Sensitive files and directories must not be placed within the web server's public document root. Application configuration, source-control metadata, backups, logs, credentials, and other private resources should be stored in filesystem locations that are not directly exposed through HTTP.
+
+### Filesystem Protection
+
+The production web root should contain only resources intentionally designed for public access. Sensitive locations such as `.git` repositories, backup archives, configuration files, environment files, and private application data should be stored outside the document root.
+
+Where required, the web server should also implement explicit deny rules for sensitive URL patterns. These controls provide defense in depth but should not replace correct filesystem placement.
+
+### Custom Routing Controls
+
+The deployment should maintain an allow-list-oriented routing model in which known public routes are explicitly exposed. Restricted routes should enforce authentication and authorization before processing sensitive operations. Requests for internal or prohibited paths should be rejected by the web server or application routing layer.
+
+### Verification
+
+After remediation, the endpoint discovery scanner should be executed again against the authorized test environment. Previously exposed resources should no longer return an unintended successful response. The retest should verify that administrative, development, repository, backup, and configuration resources are either inaccessible or appropriately protected.
+
+### Security Principle
+
+The primary defensive principle is:
+
+**Unlinked resources are not security controls. Access must be enforced through routing, authentication, authorization, and filesystem permissions.**
+
+### Expected Result
+
+The deployment should expose only intentionally public resources, while sensitive application components remain protected from direct HTTP access. This reduces information disclosure and limits the externally reachable attack surface of the web architecture.
