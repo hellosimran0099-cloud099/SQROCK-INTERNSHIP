@@ -1,0 +1,58 @@
+# Day 22 — API Rate Limiting Using Token Bucket Logic
+
+## Objective
+
+The objective of this task was to implement a stateful API rate-limiting mechanism using the Token Bucket algorithm. The mechanism was designed to track client request activity, regulate request volume, and automatically deny excessive requests before they reach the application layer.
+
+## Implementation
+
+A Python `RateLimiter` class was implemented using a token capacity, token refill rate, and a per-client state ledger. Each client is identified using its IP address. The ledger stores the current token balance and the timestamp of the client's last update.
+
+For the practical test, the rate limiter was configured with a token capacity of 3 and a refill rate of 0.5 tokens per second.
+
+## Execution Verification
+
+An automated execution loop generated ten consecutive requests from the same client IP address. The first three requests consumed the initially available tokens. Once the token balance reached zero, subsequent requests were denied because no token was available.
+
+The execution output demonstrated the expected behavior:
+
+Request 1: ALLOWED
+Request 2: ALLOWED
+Request 3: ALLOWED
+Request 4: BLOCKED
+Request 5: BLOCKED
+Request 6: BLOCKED
+Request 7: BLOCKED
+Request 8: BLOCKED
+Request 9: BLOCKED
+Request 10: BLOCKED
+
+This confirms that the denial condition is automatically triggered when the client's available token balance falls below one token.
+
+## Token Replenishment
+
+The implementation continuously calculates elapsed time between requests. Tokens are replenished according to the configured refill rate while ensuring that the token count never exceeds the defined bucket capacity.
+
+With a refill rate of 0.5 tokens per second, approximately one token becomes available after two seconds. This allows legitimate clients to resume requests gradually after the rate limit has been reached.
+
+## Enterprise Gateway Architecture
+
+In a distributed enterprise environment, rate limiting can be integrated at the API Gateway or edge security layer. Incoming requests first pass through edge security controls and then through the gateway rate-limiting filter before reaching backend API services.
+
+For multiple gateway or API instances, a shared state mechanism such as Redis can be used to maintain consistent rate-limit information across distributed nodes.
+
+The architectural flow is:
+
+Client → Edge/WAF → API Gateway → Rate Limiter → Backend API Services → Database
+
+The rate-limit state can be maintained in a shared store so that multiple gateway instances can enforce a consistent policy.
+
+## Security Significance
+
+Rate limiting provides an important availability and abuse-control layer. It can reduce excessive automated requests against authentication, password-reset, OTP, search, and public API endpoints. It also helps prevent a single client from consuming disproportionate application resources.
+
+Rate limiting is a defensive control and should normally be combined with other enterprise security mechanisms such as authentication, authorization, WAF controls, logging, monitoring, and infrastructure-level protection.
+
+## Conclusion
+
+The practical execution successfully demonstrated stateful Token Bucket rate limiting in Python. The automated request loop verified that requests are allowed while tokens are available and automatically denied when the client's token balance is exhausted. The architecture also demonstrates how the same control can be positioned at an API Gateway within a distributed enterprise environment.
