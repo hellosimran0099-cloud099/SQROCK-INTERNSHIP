@@ -1,0 +1,93 @@
+Docker Container Secure Configuration — Technical Checklist
+1. Purpose
+
+This checklist defines secure configuration practices for production Docker containers. The primary objective is to reduce container attack surface, maintain reproducible builds, and ensure applications operate using non-privileged runtime contexts.
+
+2. Secure Multi-Stage Build
+
+☐ Use separate build and runtime stages.
+
+☐ Copy only the required application artifacts from the build stage into the final image.
+
+☐ Do not include compilers, development tools, package caches, or unnecessary dependencies in the production image.
+
+Recommended structure:
+
+FROM python:3.12 AS builder
+
+WORKDIR /build
+COPY requirements.txt .
+RUN pip install --prefix=/install -r requirements.txt
+
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY --from=builder /install /usr/local
+COPY . /app
+
+USER appuser
+
+CMD ["python", "app.py"]
+3. Base Image Security
+
+☐ Avoid unpinned latest image tags.
+
+☐ Use a specific and maintained image version.
+
+☐ Prefer minimal trusted base images such as slim or other appropriately hardened variants.
+
+☐ Regularly update and scan base images for known vulnerabilities.
+
+Example:
+
+FROM python:3.12-slim
+4. Non-Privileged Runtime
+
+☐ Create a dedicated application user.
+
+☐ Explicitly specify the runtime user with the USER instruction.
+
+☐ Do not run the application as root unless there is a documented requirement.
+
+Example:
+
+RUN useradd --create-home appuser
+USER appuser
+
+☐ Apply the principle of least privilege to files and directories required by the application.
+
+5. Network Exposure
+
+☐ Expose only ports required by the application.
+
+☐ Do not include unnecessary SSH services or port 22 declarations.
+
+☐ Restrict externally reachable ports through the deployment platform or firewall.
+
+☐ Avoid embedding administrative network services inside application containers.
+
+6. Secrets and Credentials
+
+☐ Never copy private SSH keys, passwords, API keys, or tokens into the image.
+
+☐ Do not store credentials directly in the Dockerfile.
+
+☐ Use an appropriate runtime secret-management mechanism.
+
+☐ Review build context and .dockerignore to prevent accidental credential inclusion.
+
+7. Runtime Hardening
+
+☐ Drop unnecessary Linux capabilities.
+
+☐ Avoid privileged containers.
+
+☐ Use a read-only root filesystem where application requirements permit it.
+
+☐ Limit writable directories to those specifically required by the application.
+
+☐ Configure resource limits such as CPU and memory where supported by the deployment platform.
+
+8. Verification Checklist
+
+Before production deployment, verify:
