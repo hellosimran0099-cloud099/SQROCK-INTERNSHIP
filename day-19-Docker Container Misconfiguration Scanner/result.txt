@@ -1,0 +1,6 @@
+[*] Parsing Container Directives: Dockerfile.txt
+
+[RISK DETECTED] Line 1: Base image uses unpinned 'latest' tag.
+[CRITICAL PROHIBITED] Line 5: Container declares SSH protocol port 22.
+[RISK DETECTED] Non-compliant posture: Explicit USER instruction is absent (Implicit Root execution risk).
+(.venv) PS C:\Users\imran cyber\Desktop\september intership\day-19-Docker Container Misconfiguration Scanner> 
